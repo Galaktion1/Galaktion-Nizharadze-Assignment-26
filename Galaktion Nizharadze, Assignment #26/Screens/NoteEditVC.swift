@@ -7,7 +7,7 @@
 
 import UIKit
 
-class NoteVC: UIViewController {
+class NoteEditVC: UIViewController {
     
     var note: Note!
     
@@ -47,7 +47,7 @@ class NoteVC: UIViewController {
 }
 
 
-extension NoteVC: UITextViewDelegate {
+extension NoteEditVC: UITextViewDelegate {
     func textViewDidEndEditing(_ textView: UITextView) {
         note?.text = textView.text
         if note?.title.isEmpty ?? true {

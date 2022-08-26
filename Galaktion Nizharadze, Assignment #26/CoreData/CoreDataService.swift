@@ -40,6 +40,7 @@ class CoreDataService {
     }
 }
 
+
 extension CoreDataService {
     func createNote() -> Note {
         let note = Note(context: CoreDataService.shared.viewContext)
@@ -50,6 +51,11 @@ extension CoreDataService {
         save()
         
         return note
+    }
+    
+    func changeNoteFavourity(_ note: Note) {
+        note.isFavourite.toggle()
+        save()
     }
     
     func fetchNotes() -> [Note] {

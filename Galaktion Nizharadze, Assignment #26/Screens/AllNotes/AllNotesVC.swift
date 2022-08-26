@@ -19,7 +19,8 @@ class AllNotesVC: UIViewController {
     let tableView: UITableView = {
         let tableView = UITableView()
         tableView.translatesAutoresizingMaskIntoConstraints = false
-
+        tableView.separatorStyle = .none
+        
         return tableView
     }()
     
@@ -32,14 +33,23 @@ class AllNotesVC: UIViewController {
         return button
     }()
     
-
+    let moveToFavouritesNote: UIButton = {
+        let button = UIButton(type: .custom)
+        button.frame = CGRect(x: 0, y: 0, width: 45, height: 45)
+        button.setImage(UIImage(systemName: "heart"), for: .normal)
+        button.layer.masksToBounds = true
+        
+        return button
+    }()
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
         confNavigationController()
-        tableView.delegate = self
-        tableView.dataSource = self
+        extendTableViewFunctionality()
         noteCreateButton.addTarget(self, action: #selector(createNote), for: .touchUpInside)
+        moveToFavouritesNote.addTarget(self, action: #selector(moveToFavs), for: .touchUpInside)
         fetchNotesFromCoreData()
     }
     
@@ -48,21 +58,42 @@ class AllNotesVC: UIViewController {
         confTableView()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        tableView.reloadData()
+    }
+    
+    
     private func confNavigationController() {
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationItem.largeTitleDisplayMode = .always
         title = "Notes"
         navigationItem.rightBarButtonItem = UIBarButtonItem(customView: noteCreateButton)
+        navigationItem.leftBarButtonItem = UIBarButtonItem(customView: moveToFavouritesNote)
+    }
+    
+    private func extendTableViewFunctionality() {
+        tableView.register(NoteTableViewCell.self, forCellReuseIdentifier: "NoteTableViewCell")
+        tableView.delegate = self
+        tableView.dataSource = self
     }
     
     @objc func createNote() {
         goToEditNote(startNewNote())
     }
     
+    @objc func moveToFavs() {
+        let vc = FavouriteNotesVC()
+        vc.favNotes = allNotes.filter { $0.isFavourite }
+        
+        navigationController?.pushViewController(vc, animated: true)
+    }
+    
     private func goToEditNote(_ note: Note) {
-        let vc = NoteVC()
+        let vc = NoteEditVC()
         vc.note = note
         vc.delegate = self
+        
         navigationController?.pushViewController(vc, animated: true)
     }
     
@@ -90,7 +121,6 @@ class AllNotesVC: UIViewController {
         CoreDataService.shared.deleteNote(note)
     }
     
-    
     private func confTableView() {
         view.addSubview(tableView)
         
@@ -98,23 +128,26 @@ class AllNotesVC: UIViewController {
             tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             tableView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 5),
             tableView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -5),
-            tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
+            tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
         ])
     }
 }
 
 
 extension AllNotesVC: UITableViewDelegate, UITableViewDataSource {
-
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         allNotes.count
     }
-
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        100
+    }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell()
-        cell.selectionStyle = .none
-        let currentNote = allNotes[indexPath.row]
-        cell.textLabel?.text = currentNote.title
+        let cell = tableView.dequeueReusableCell(withIdentifier: "NoteTableViewCell") as! NoteTableViewCell
+        cell.note = allNotes[indexPath.row]
+        cell.setDataToElements()
         
         return cell
     }
@@ -142,7 +175,6 @@ extension AllNotesVC: AllNotesVCDelegate {
         let indexPath = indexForNote(id: id, in: allNotes)
         allNotes.remove(at: indexPath.row)
         tableView.deleteRows(at: [indexPath], with: .automatic)
-
     }
     
     func reloadData() {

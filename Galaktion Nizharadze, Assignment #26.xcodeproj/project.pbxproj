@@ -10,20 +10,22 @@
 		9A0D157C28B8B8B200017554 /* Note+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A0D157A28B8B8B200017554 /* Note+CoreDataClass.swift */; };
 		9A0D157D28B8B8B200017554 /* Note+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A0D157B28B8B8B200017554 /* Note+CoreDataProperties.swift */; };
 		9A0D158028B8BB5B00017554 /* CoreDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A0D157F28B8BB5B00017554 /* CoreDataService.swift */; };
-		9A0D158328B8C14100017554 /* NoteVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A0D158228B8C14100017554 /* NoteVC.swift */; };
+		9A0D158328B8C14100017554 /* NoteEditVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A0D158228B8C14100017554 /* NoteEditVC.swift */; };
 		9A30A3A628B77C1100F38137 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A30A3A528B77C1100F38137 /* AppDelegate.swift */; };
 		9A30A3A828B77C1100F38137 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A30A3A728B77C1100F38137 /* SceneDelegate.swift */; };
 		9A30A3AA28B77C1100F38137 /* AllNotesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A30A3A928B77C1100F38137 /* AllNotesVC.swift */; };
 		9A30A3B028B77C1100F38137 /* Galaktion_Nizharadze__Assignment__26.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9A30A3AE28B77C1100F38137 /* Galaktion_Nizharadze__Assignment__26.xcdatamodeld */; };
 		9A30A3B228B77C1400F38137 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9A30A3B128B77C1400F38137 /* Assets.xcassets */; };
 		9A30A3B528B77C1400F38137 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9A30A3B328B77C1400F38137 /* LaunchScreen.storyboard */; };
+		9AB4E20228B95D0100FA6B31 /* NoteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AB4E20128B95D0100FA6B31 /* NoteTableViewCell.swift */; };
+		9AB4E20428B967BF00FA6B31 /* FavouriteNotesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AB4E20328B967BF00FA6B31 /* FavouriteNotesVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		9A0D157A28B8B8B200017554 /* Note+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Note+CoreDataClass.swift"; sourceTree = "<group>"; };
 		9A0D157B28B8B8B200017554 /* Note+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Note+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		9A0D157F28B8BB5B00017554 /* CoreDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataService.swift; sourceTree = "<group>"; };
-		9A0D158228B8C14100017554 /* NoteVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteVC.swift; sourceTree = "<group>"; };
+		9A0D158228B8C14100017554 /* NoteEditVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteEditVC.swift; sourceTree = "<group>"; };
 		9A30A3A228B77C1100F38137 /* Galaktion Nizharadze, Assignment #26.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Galaktion Nizharadze, Assignment #26.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9A30A3A528B77C1100F38137 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9A30A3A728B77C1100F38137 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -32,6 +34,8 @@
 		9A30A3B128B77C1400F38137 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9A30A3B428B77C1400F38137 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9A30A3B628B77C1400F38137 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9AB4E20128B95D0100FA6B31 /* NoteTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteTableViewCell.swift; sourceTree = "<group>"; };
+		9AB4E20328B967BF00FA6B31 /* FavouriteNotesVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouriteNotesVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,8 +83,9 @@
 		9A0D158128B8C10500017554 /* Screens */ = {
 			isa = PBXGroup;
 			children = (
-				9A30A3A928B77C1100F38137 /* AllNotesVC.swift */,
-				9A0D158228B8C14100017554 /* NoteVC.swift */,
+				9AB4E20028B95CDE00FA6B31 /* AllNotes */,
+				9A0D158228B8C14100017554 /* NoteEditVC.swift */,
+				9AB4E20328B967BF00FA6B31 /* FavouriteNotesVC.swift */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -109,6 +114,15 @@
 				9A0D158128B8C10500017554 /* Screens */,
 			);
 			path = "Galaktion Nizharadze, Assignment #26";
+			sourceTree = "<group>";
+		};
+		9AB4E20028B95CDE00FA6B31 /* AllNotes */ = {
+			isa = PBXGroup;
+			children = (
+				9A30A3A928B77C1100F38137 /* AllNotesVC.swift */,
+				9AB4E20128B95D0100FA6B31 /* NoteTableViewCell.swift */,
+			);
+			path = AllNotes;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -181,13 +195,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9AB4E20428B967BF00FA6B31 /* FavouriteNotesVC.swift in Sources */,
 				9A0D158028B8BB5B00017554 /* CoreDataService.swift in Sources */,
 				9A30A3AA28B77C1100F38137 /* AllNotesVC.swift in Sources */,
 				9A30A3A628B77C1100F38137 /* AppDelegate.swift in Sources */,
 				9A0D157C28B8B8B200017554 /* Note+CoreDataClass.swift in Sources */,
 				9A30A3A828B77C1100F38137 /* SceneDelegate.swift in Sources */,
+				9AB4E20228B95D0100FA6B31 /* NoteTableViewCell.swift in Sources */,
 				9A30A3B028B77C1100F38137 /* Galaktion_Nizharadze__Assignment__26.xcdatamodeld in Sources */,
-				9A0D158328B8C14100017554 /* NoteVC.swift in Sources */,
+				9A0D158328B8C14100017554 /* NoteEditVC.swift in Sources */,
 				9A0D157D28B8B8B200017554 /* Note+CoreDataProperties.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
