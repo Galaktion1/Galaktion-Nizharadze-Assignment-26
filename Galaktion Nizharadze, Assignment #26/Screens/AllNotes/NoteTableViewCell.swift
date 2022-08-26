@@ -87,14 +87,16 @@ class NoteTableViewCell: UITableViewCell {
         ])
     }
     
+    func setButtonImage() {
+        note.isFavourite ?
+        favouriteButton.setImage(UIImage(systemName: "heart.fill"), for: .normal) :
+        favouriteButton.setImage(UIImage(systemName: "heart"), for: .normal)
+    }
     
     @objc func favButtonAction() {
         CoreDataService.shared.changeNoteFavourity(note)
         
-        note.isFavourite ?
-        favouriteButton.setImage(UIImage(systemName: "heart.fill"), for: .normal) :
-        favouriteButton.setImage(UIImage(systemName: "heart"), for: .normal)
-        
+        setButtonImage()
     }
     
     
@@ -102,8 +104,6 @@ class NoteTableViewCell: UITableViewCell {
         titleLabel.text = note.title
         descriptionLabel.text = note.desc
         
-        note.isFavourite ?
-        favouriteButton.setImage(UIImage(systemName: "heart.fill"), for: .normal) :
-        favouriteButton.setImage(UIImage(systemName: "heart"), for: .normal)
+        setButtonImage()
     }
 }
