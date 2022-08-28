@@ -14,7 +14,13 @@ protocol AllNotesVCDelegate: AnyObject {
 
 class AllNotesVC: UIViewController {
     
-    var allNotes: [Note] = []
+    var emptyNotesNotifyLabel = EmptyColllectionExtension.shared.centerLabel(text: "There is no note 📝 ")
+    var allNotes: [Note] = [] {
+        didSet {
+            presentEmptyTasksNotifyLabel()
+        }
+    }
+    
     
     let tableView: UITableView = {
         let tableView = UITableView()
@@ -84,7 +90,7 @@ class AllNotesVC: UIViewController {
     
     @objc func moveToFavs() {
         let vc = FavouriteNotesVC()
-        vc.favNotes = allNotes.filter { $0.isFavourite }
+//        vc.favNotes = allNotes.filter { $0.isFavourite }  at first i wrote code at this way
         
         navigationController?.pushViewController(vc, animated: true)
     }
@@ -108,7 +114,7 @@ class AllNotesVC: UIViewController {
     }
     
     private func fetchNotesFromCoreData() {
-        allNotes = CoreDataService.shared.fetchNotes()
+        allNotes = CoreDataService.shared.fetchNotes(with: nil)
     }
     
     private func indexForNote(id: UUID, in list: [Note]) -> IndexPath {
@@ -119,6 +125,16 @@ class AllNotesVC: UIViewController {
     private func removeNoteFromCoreData(note: Note) {
         deleteNote(id: note.id)
         CoreDataService.shared.deleteNote(note)
+    }
+    
+    private func presentEmptyTasksNotifyLabel() {
+        if allNotes.count == 0 {
+            tableView.addSubview(emptyNotesNotifyLabel)
+            emptyNotesNotifyLabel.topAnchor.constraint(equalTo: tableView.topAnchor, constant: (tableView.frame.height / 2)).isActive = true
+            emptyNotesNotifyLabel.centerXAnchor.constraint(equalTo: tableView.centerXAnchor).isActive = true
+        } else {
+            emptyNotesNotifyLabel.removeFromSuperview()
+        }
     }
     
     private func confTableView() {
@@ -159,7 +175,6 @@ extension AllNotesVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             removeNoteFromCoreData(note: allNotes[indexPath.row])
-            
         }
     }
     

@@ -17,6 +17,7 @@
 		9A30A3B028B77C1100F38137 /* Galaktion_Nizharadze__Assignment__26.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9A30A3AE28B77C1100F38137 /* Galaktion_Nizharadze__Assignment__26.xcdatamodeld */; };
 		9A30A3B228B77C1400F38137 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9A30A3B128B77C1400F38137 /* Assets.xcassets */; };
 		9A30A3B528B77C1400F38137 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9A30A3B328B77C1400F38137 /* LaunchScreen.storyboard */; };
+		9A84FD5628BB6C6C00985EBE /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A84FD5528BB6C6C00985EBE /* Extensions.swift */; };
 		9AB4E20228B95D0100FA6B31 /* NoteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AB4E20128B95D0100FA6B31 /* NoteTableViewCell.swift */; };
 		9AB4E20428B967BF00FA6B31 /* FavouriteNotesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AB4E20328B967BF00FA6B31 /* FavouriteNotesVC.swift */; };
 /* End PBXBuildFile section */
@@ -34,6 +35,7 @@
 		9A30A3B128B77C1400F38137 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9A30A3B428B77C1400F38137 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9A30A3B628B77C1400F38137 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9A84FD5528BB6C6C00985EBE /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		9AB4E20128B95D0100FA6B31 /* NoteTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteTableViewCell.swift; sourceTree = "<group>"; };
 		9AB4E20328B967BF00FA6B31 /* FavouriteNotesVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouriteNotesVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -55,6 +57,7 @@
 				9A30A3A528B77C1100F38137 /* AppDelegate.swift */,
 				9A30A3A728B77C1100F38137 /* SceneDelegate.swift */,
 				9A30A3B628B77C1400F38137 /* Info.plist */,
+				9A84FD5528BB6C6C00985EBE /* Extensions.swift */,
 			);
 			path = Infrastructure;
 			sourceTree = "<group>";
@@ -204,6 +207,7 @@
 				9AB4E20228B95D0100FA6B31 /* NoteTableViewCell.swift in Sources */,
 				9A30A3B028B77C1100F38137 /* Galaktion_Nizharadze__Assignment__26.xcdatamodeld in Sources */,
 				9A0D158328B8C14100017554 /* NoteEditVC.swift in Sources */,
+				9A84FD5628BB6C6C00985EBE /* Extensions.swift in Sources */,
 				9A0D157D28B8B8B200017554 /* Note+CoreDataProperties.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

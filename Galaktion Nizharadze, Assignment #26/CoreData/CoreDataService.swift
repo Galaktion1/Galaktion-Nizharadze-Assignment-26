@@ -58,8 +58,13 @@ extension CoreDataService {
         save()
     }
     
-    func fetchNotes() -> [Note] {
+    func fetchNotes(with isFavPredicate: Bool?) -> [Note] {
         let request: NSFetchRequest<Note> = Note.fetchRequest()
+        
+        if let isFavPredicate = isFavPredicate {
+            let predicate = NSPredicate(format: "isFavourite == %@", NSNumber(value: isFavPredicate))
+            request.predicate = predicate
+        }
         
         var notes = [Note]()
         do {
@@ -70,6 +75,7 @@ extension CoreDataService {
         
         return notes
     }
+    
     
     func deleteNote(_ note: Note) {
         viewContext.delete(note)

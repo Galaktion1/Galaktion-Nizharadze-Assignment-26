@@ -12,12 +12,20 @@ class FavouriteNotesVC: UIViewController {
     
     let tableView = UITableView()
     
-    var favNotes: [Note]!
-
+    var favNotes = [Note]() {
+        didSet {
+            presentEmptyTasksNotifyLabel()
+        }
+    }
+    
+    var emptyNotesNotifyLabel = EmptyColllectionExtension.shared.centerLabel(text: "There is no favourite note 📝")
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
+        favNotes = CoreDataService.shared.fetchNotes(with: true)
         confTableView()
+        
         // Do any additional setup after loading the view.
     }
     
@@ -26,6 +34,17 @@ class FavouriteNotesVC: UIViewController {
         vc.note = note
         navigationController?.pushViewController(vc, animated: true)
     }
+    
+    private func presentEmptyTasksNotifyLabel() {
+        if favNotes.count == 0 {
+            tableView.addSubview(emptyNotesNotifyLabel)
+            emptyNotesNotifyLabel.topAnchor.constraint(equalTo: tableView.topAnchor, constant: (tableView.frame.height / 2)).isActive = true
+            emptyNotesNotifyLabel.centerXAnchor.constraint(equalTo: tableView.centerXAnchor).isActive = true
+        } else {
+            emptyNotesNotifyLabel.removeFromSuperview()
+        }
+    }
+
     
     
     private func confTableView() {
